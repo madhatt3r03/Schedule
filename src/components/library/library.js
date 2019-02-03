@@ -7,18 +7,17 @@ import LibraryCourse from './libraryCourse';
 
 class Library extends Component {
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.fetchCourses()
-    } 
+    }
 
     renderCourses() {
         const data = this.props.courses
 
         return data.map((course, index) => {
-            return <LibraryCourse key={index}/>
+            return <LibraryCourse {...course} key={index}/>
         })
     }
-
 
     render() {
         return (
@@ -30,7 +29,7 @@ class Library extends Component {
     }
 }
 
-function mapToStateProps(state) {
+function mapStateToProps(state) {
     return {
         courses: state.courses
     }
